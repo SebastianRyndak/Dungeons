@@ -37,9 +37,7 @@ public class Cell implements Drawable {
         return gameMap.getCell(x + dx, y + dy);
     }
 
-    public Item getItem() {
-        return item;
-    }
+    public Item getItem() { return item; }
 
     public void setItem(Item item) {
         this.item = item;
