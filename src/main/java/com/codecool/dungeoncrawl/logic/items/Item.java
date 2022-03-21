@@ -1,9 +1,13 @@
 package com.codecool.dungeoncrawl.logic.items;
 
-public abstract class Item {
-    public String name;
+import com.codecool.dungeoncrawl.logic.Cell;
+import com.codecool.dungeoncrawl.logic.Drawable;
 
-    public Item(String name) {
-        this.name = name;
+public abstract class Item implements Drawable {
+    private Cell cell;
+
+    public Item(Cell cell) {
+        this.cell = cell;
+        this.cell.setItem(this);
     }
 }
