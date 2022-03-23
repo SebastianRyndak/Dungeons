@@ -2,16 +2,16 @@ package com.codecool.dungeoncrawl.logic.actors;
 
 import com.codecool.dungeoncrawl.logic.Cell;
 
-public class Player extends Actor {
+public class GiantSpider extends Actor {
 
-
-    public Player(Cell cell) {
+    public GiantSpider(Cell cell) {
         super(cell);
-        this.setStrength(5);
+        this.setStrength(4);
         this.setHealth(15);
     }
 
+    @Override
     public String getTileName() {
-        return "player";
+        return "giantspider";
     }
 }
