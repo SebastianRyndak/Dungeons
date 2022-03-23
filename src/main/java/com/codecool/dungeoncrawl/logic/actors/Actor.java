@@ -3,6 +3,10 @@ package com.codecool.dungeoncrawl.logic.actors;
 import com.codecool.dungeoncrawl.logic.Cell;
 import com.codecool.dungeoncrawl.logic.CellType;
 import com.codecool.dungeoncrawl.logic.Drawable;
+import com.codecool.dungeoncrawl.logic.items.Item;
+import com.codecool.dungeoncrawl.logic.items.Sword;
+
+import java.util.ArrayList;
 
 public abstract class Actor implements Drawable {
     private String name;
@@ -17,15 +21,8 @@ public abstract class Actor implements Drawable {
 
 
     public void move(int dx, int dy) {
-        Cell nextCell = cell.getNeighbor(dx, dy);
-        if (nextCell.getType() != CellType.WALL){
-            if (!(nextCell.getActor() instanceof Actor)){
-                cell.setActor(null);
-                nextCell.setActor(this);
-                cell = nextCell;
-            }
-        }
     }
+
 
     public int getHealth() {
         return health;
@@ -49,9 +46,12 @@ public abstract class Actor implements Drawable {
         return cell.getY();
     }
 
+    public void setCell(Cell cell) {
+        this.cell = cell;
+    }
+
     public int getStrength() { return strength; }
 
     public void setStrength(int strength) { this.strength = strength; }
-
 
 }
