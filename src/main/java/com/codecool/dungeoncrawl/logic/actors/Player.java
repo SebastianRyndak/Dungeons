@@ -47,7 +47,7 @@ public class Player extends Actor {
 
     public void move(int dx, int dy) {
         Cell nextCell = this.getCell().getNeighbor(dx, dy);
-        if (nextCell.getType() != CellType.WALL && nextCell.getType() != CellType.PRISONGRATES && nextCell.getType() != CellType.GRATES){
+        if (nextCell.getType() == CellType.FLOOR || nextCell.getType() == CellType.DOOR || nextCell.getType() == CellType.OPEN_DOOR ){
             if (!(nextCell.getActor() instanceof Actor || nextCell.getType() == CellType.DOOR)){
                 this.getCell().setActor(null);
                 nextCell.setActor(this);
