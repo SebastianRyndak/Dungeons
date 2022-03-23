@@ -1,6 +1,7 @@
 package com.codecool.dungeoncrawl;
 
 import com.codecool.dungeoncrawl.logic.Cell;
+import com.codecool.dungeoncrawl.logic.CellType;
 import com.codecool.dungeoncrawl.logic.GameMap;
 import com.codecool.dungeoncrawl.logic.MapLoader;
 import com.codecool.dungeoncrawl.logic.actors.Player;
@@ -108,7 +109,10 @@ public class Main extends Application {
                         Tiles.drawTile(context, cell.getActor(), x, y);
                     } else if (cell.getItem() != null){
                         Tiles.drawTile(context, cell.getItem(), x, y);
-                    } else {
+                    } else if (cell.getType() == CellType.DEAD){
+                        cell.setType(CellType.FLOOR);
+                    }
+                    else {
                         Tiles.drawTile(this.context, cell, x, y);
                     }
                 }
