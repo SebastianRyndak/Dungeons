@@ -1,5 +1,6 @@
 package com.codecool.dungeoncrawl.logic.actors;
 
+import com.codecool.dungeoncrawl.Tiles;
 import com.codecool.dungeoncrawl.logic.Cell;
 import com.codecool.dungeoncrawl.logic.CellType;
 import com.codecool.dungeoncrawl.logic.items.Item;
@@ -35,13 +36,21 @@ public class Player extends Actor {
     }
 
     public void move(int dx, int dy) {
+        boolean isKey = true;
         Cell nextCell = this.getCell().getNeighbor(dx, dy);
         if (nextCell.getType() != CellType.WALL){
-            if (!(nextCell.getActor() instanceof Actor)){
+            if (!(nextCell.getActor() instanceof Actor || nextCell.getType() == CellType.DOOR)){
                 this.getCell().setActor(null);
                 nextCell.setActor(this);
                 this.setCell(nextCell);
                 pickUpTheItem();
+            }
+            if (nextCell.getType() == CellType.DOOR && isKey == true) {
+                this.getCell().setActor(null);
+                nextCell.setActor(this);
+                this.setCell(nextCell);
+                Tiles.tileReplace();
+                this.getCell().setType(CellType.OPEN_DOOR);
             }
         }
     }
@@ -55,5 +64,8 @@ public class Player extends Actor {
             }
         }
     }
+
+
+
 
 }
