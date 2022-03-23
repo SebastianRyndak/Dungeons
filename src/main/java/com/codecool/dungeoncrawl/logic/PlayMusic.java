@@ -18,7 +18,7 @@ public class PlayMusic {
         String response = "Y";
 
         while (!response.equals("Q")){
-            System.out.print("  Do you want your game to be accompanied by music? Y/N: ");
+//            System.out.print("  Do you want your game to be accompanied by music? Y/N: ");
             System.out.println();
 //            response = scanner.next();
 //            response = response.toUpperCase();

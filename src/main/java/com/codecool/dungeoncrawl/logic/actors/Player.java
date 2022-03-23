@@ -52,7 +52,6 @@ public class Player extends Actor {
                 this.getCell().setActor(null);
                 nextCell.setActor(this);
                 this.setCell(nextCell);
-                pickUpTheItem();
             }
             if (nextCell.getType() == CellType.DOOR && key == true) {
                 this.getCell().setActor(null);
