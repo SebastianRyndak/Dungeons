@@ -36,7 +36,6 @@ public class Player extends Actor {
     }
 
     public void move(int dx, int dy) {
-        boolean isKey = true;
         Cell nextCell = this.getCell().getNeighbor(dx, dy);
         if (nextCell.getType() != CellType.WALL){
             if (!(nextCell.getActor() instanceof Actor || nextCell.getType() == CellType.DOOR)){
@@ -45,7 +44,7 @@ public class Player extends Actor {
                 this.setCell(nextCell);
                 pickUpTheItem();
             }
-            if (nextCell.getType() == CellType.DOOR && isKey == true) {
+            if (nextCell.getType() == CellType.DOOR && key == true) {
                 this.getCell().setActor(null);
                 nextCell.setActor(this);
                 this.setCell(nextCell);
@@ -61,11 +60,20 @@ public class Player extends Actor {
             if (cell.getItem() instanceof Item) {
                 insertIntoInventory(cell.getItem());
                 cell.setItem(null);
+                checkIfYouHaveTheKey();
             }
         }
+
     }
 
-
+    private boolean checkIfYouHaveTheKey(){
+        for (Item item: inventory) {
+            if (item.getTileName().equals("key")){
+                return key=true;
+            }
+        }
+        return key;
+    }
 
 
 }
