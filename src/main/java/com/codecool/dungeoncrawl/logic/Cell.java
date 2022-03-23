@@ -17,6 +17,19 @@ public class Cell implements Drawable {
         this.type = type;
     }
 
+//    public void setCell(Cell cell){
+////        this.setType(cell.getType());
+////        this.setActor(cell.getActor());
+////        this.setItem(cell.getItem());
+////        this.setGameMap(cell.getGameMap());
+////        this.setX(cell.getX());
+////        this.setY(cell.getY());
+//    }
+
+    public void setGameMap(GameMap gameMap) {
+        this.gameMap = gameMap;
+    }
+
     public CellType getType() {
         return type;
     }
@@ -39,6 +52,8 @@ public class Cell implements Drawable {
 
     public Item getItem() { return item; }
 
+
+
     public void setItem(Item item) {
         this.item = item;
     }
@@ -54,5 +69,17 @@ public class Cell implements Drawable {
 
     public int getY() {
         return y;
+    }
+
+    public GameMap getGameMap() {
+        return gameMap;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public void setY(int y) {
+        this.y = y;
     }
 }
