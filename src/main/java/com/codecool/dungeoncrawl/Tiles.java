@@ -25,6 +25,17 @@ public class Tiles {
     static {
         tileMap.put("empty", new Tile(0, 0));
         tileMap.put("wall", new Tile(10, 17));
+        tileMap.put("wall1",new Tile(18,0));
+        tileMap.put("wall2",new Tile(19,0));
+        tileMap.put("wall3",new Tile(20,0));
+        tileMap.put("wall4",new Tile(18,1));
+        tileMap.put("wall5",new Tile(20,1));
+        tileMap.put("wall6",new Tile(18,2));
+        tileMap.put("wall7",new Tile(19,2));
+        tileMap.put("wall8",new Tile(20,2));
+        tileMap.put("prisonGrates",new Tile(13,11));
+        tileMap.put("grates",new Tile(5,5));
+        tileMap.put("bones",new Tile(0,15));
         tileMap.put("floor", new Tile(2, 0));
         tileMap.put("player", new Tile(27, 0));
         tileMap.put("skeleton", new Tile(29, 6));
@@ -33,6 +44,7 @@ public class Tiles {
         tileMap.put("bat", new Tile(26, 8));
         tileMap.put("giantspider", new Tile(28, 5));
         tileMap.put("closed door", new Tile(3, 9));
+        tileMap.put("candlestick", new Tile(4,15));
     }
 
     public static void tileReplace(){

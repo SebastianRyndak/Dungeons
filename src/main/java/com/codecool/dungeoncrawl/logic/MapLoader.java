@@ -5,7 +5,6 @@ import com.codecool.dungeoncrawl.logic.actors.GiantSpider;
 import com.codecool.dungeoncrawl.logic.actors.Player;
 import com.codecool.dungeoncrawl.logic.actors.Skeleton;
 import com.codecool.dungeoncrawl.logic.items.Door;
-import com.codecool.dungeoncrawl.logic.items.Item;
 import com.codecool.dungeoncrawl.logic.items.Key;
 import com.codecool.dungeoncrawl.logic.items.Sword;
 
@@ -33,6 +32,39 @@ public class MapLoader {
                             break;
                         case '#':
                             cell.setType(CellType.WALL);
+                            break;
+                        case '1':
+                            cell.setType(CellType.WALL1);
+                            break;
+                        case '2':
+                            cell.setType(CellType.WALL2);
+                            break;
+                        case '3':
+                            cell.setType(CellType.WALL3);
+                            break;
+                        case '4':
+                            cell.setType(CellType.WALL4);
+                            break;
+                        case '5':
+                            cell.setType(CellType.WALL5);
+                            break;
+                        case '6':
+                            cell.setType(CellType.WALL6);
+                            break;
+                        case '7':
+                            cell.setType(CellType.WALL7);
+                            break;
+                        case '8':
+                            cell.setType(CellType.WALL8);
+                            break;
+                        case 'p':
+                            cell.setType(CellType.PRISONGRATES);
+                            break;
+                        case '!':
+                            cell.setType(CellType.GRATES);
+                            break;
+                        case '/':
+                            cell.setType(CellType.BONES);
                             break;
                         case '.':
                             cell.setType(CellType.FLOOR);
@@ -64,6 +96,9 @@ public class MapLoader {
                         case 'd':
                             cell.setType(CellType.DOOR);
                             new Door(cell);
+                            break;
+                        case 'c':
+                            cell.setType(CellType.CANDLESTICK);
                             break;
                         default:
                             throw new RuntimeException("Unrecognized character: '" + line.charAt(x) + "'");
