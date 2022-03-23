@@ -7,12 +7,15 @@ import com.codecool.dungeoncrawl.logic.items.Item;
 import java.util.ArrayList;
 
 public class Player extends Actor {
+  
     public ArrayList<Item> inventory = new ArrayList<>();
 
     private boolean key = false;
 
     public Player(Cell cell) {
         super(cell);
+        this.setStrength(5);
+        this.setHealth(15);
     }
 
     public String getTileName() {
