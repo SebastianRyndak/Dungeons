@@ -9,6 +9,9 @@ public class Cell implements Drawable {
     private Item item;
     private GameMap gameMap;
     private int x, y;
+    private Drawable cellContent;
+
+
 
     Cell(GameMap gameMap, int x, int y, CellType type) {
         this.gameMap = gameMap;
@@ -52,6 +55,9 @@ public class Cell implements Drawable {
 
     public Item getItem() { return item; }
 
+    public Drawable getCellContent() {
+        return cellContent;
+    }
 
 
     public void setItem(Item item) {

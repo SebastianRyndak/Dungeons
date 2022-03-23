@@ -8,7 +8,9 @@ import com.codecool.dungeoncrawl.logic.items.Item;
 import java.util.ArrayList;
 
 public class Player extends Actor {
-  
+
+
+
     public ArrayList<Item> inventory = new ArrayList<>();
 
     private boolean key = false;
@@ -23,12 +25,20 @@ public class Player extends Actor {
         return "player";
     }
 
-    public boolean isKey() {
-        return key;
+    public String getInventoryContent(){
+        String itemsos = "";
+        for (Item items: getInventory()) {
+            itemsos += items.getTileName() + "\n";
+        }
+        return itemsos;
     }
 
     public ArrayList<Item> getInventory() {
         return inventory;
+    }
+
+    public void setInventory(ArrayList<Item> inventory) {
+        this.inventory = inventory;
     }
 
     public void insertIntoInventory(Item item){
@@ -37,7 +47,7 @@ public class Player extends Actor {
 
     public void move(int dx, int dy) {
         Cell nextCell = this.getCell().getNeighbor(dx, dy);
-        if (nextCell.getType() != CellType.WALL){
+        if (nextCell.getType() != CellType.WALL && nextCell.getType() != CellType.PRISONGRATES && nextCell.getType() != CellType.GRATES){
             if (!(nextCell.getActor() instanceof Actor || nextCell.getType() == CellType.DOOR)){
                 this.getCell().setActor(null);
                 nextCell.setActor(this);
@@ -63,7 +73,6 @@ public class Player extends Actor {
                 checkIfYouHaveTheKey();
             }
         }
-
     }
 
     private boolean checkIfYouHaveTheKey(){
@@ -74,6 +83,4 @@ public class Player extends Actor {
         }
         return key;
     }
-
-
 }
