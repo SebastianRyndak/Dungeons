@@ -102,6 +102,22 @@ public class MapLoader {
                             cell.setType(CellType.FLOOR);
                             new Potion(cell);
                             break;
+                        case 'S':
+                            cell.setType(CellType.STAIRS);
+                            break;
+                        case 't':
+                            cell.setType(CellType.CORNER1);
+                            break;
+                        case 'y':
+                            cell.setType(CellType.CORNER2);
+                            break;
+                        case 'u':
+                            cell.setType(CellType.CORNER3);
+                            break;
+                        case 'i':
+                            cell.setType(CellType.CORNER4);
+                            break;
+
                         case 'e':
                             cell.setType(CellType.FLOOR);
                             new Helmet(cell);
