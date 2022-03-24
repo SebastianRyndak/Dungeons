@@ -45,6 +45,7 @@ public class Tiles {
         tileMap.put("giantspider", new Tile(28, 5));
         tileMap.put("closed door", new Tile(3, 9));
         tileMap.put("candlestick", new Tile(4,15));
+        tileMap.put("potion", new Tile(17,25));
     }
 
     public static void tileReplace(){
@@ -61,6 +62,10 @@ public class Tiles {
 
     public static void tileReplaceForSpider(){
         tileMap.put("giantspider", new Tile(17, 24));
+    }
+
+    public static void tileReplaceForPlayer(){
+        tileMap.put("player", new Tile(18, 24));
     }
 
 
