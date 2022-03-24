@@ -4,7 +4,9 @@ import com.codecool.dungeoncrawl.logic.Cell;
 import com.codecool.dungeoncrawl.logic.CellType;
 import com.codecool.dungeoncrawl.logic.GameMap;
 import com.codecool.dungeoncrawl.logic.MapLoader;
+import com.codecool.dungeoncrawl.logic.actors.Bat;
 import com.codecool.dungeoncrawl.logic.actors.Player;
+import com.codecool.dungeoncrawl.logic.actors.Skeleton;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -16,6 +18,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+
+import java.util.Random;
 
 
 public class Main extends Application {
@@ -65,6 +69,8 @@ public class Main extends Application {
     }
 
     private void onKeyPressed(KeyEvent keyEvent) {
+        enemyMoves();
+        resetMonsterMove();
         switch (keyEvent.getCode()) {
             case UP:
                 map.getPlayer().move(0, -1);
@@ -88,8 +94,40 @@ public class Main extends Application {
                 break;
         }
     }
+    public int x, y = 0;
+    private void enemyMoves() {
+        for (Cell[] cells: map.getCells()) {
+            for (Cell cell: cells) {
+                if (cell.getActor() instanceof Skeleton || cell.getActor() instanceof Bat) {
+                    if (cell.getActor().isCanMove()) {
+                        Random r = new Random();
+                        int direction = r.nextInt(2);
+                        int upOrDown = r.nextInt(2);
+                        if (direction == 0) {
+                            y = 0;
+                            x = (upOrDown == 0) ? -1 : 1;
+                        } else {
+                            x = 0;
+                            y = (upOrDown == 0) ? -1 : 1;
+                        }
+                        cell.getActor().setCanMove(false);
+                        cell.getActor().monsterMove(x, y);
 
 
+                    }
+                }
+            }
+        }
+    }
+    private void resetMonsterMove() {
+        for (Cell[] cells: map.getCells()) {
+            for (Cell cell: cells) {
+                if (cell.getActor() instanceof Skeleton || cell.getActor() instanceof Bat) {
+                    cell.getActor().setCanMove(true);
+                }
+            }
+        }
+    }
 
     private void refresh() {
         context.setFill(Color.BLACK);
