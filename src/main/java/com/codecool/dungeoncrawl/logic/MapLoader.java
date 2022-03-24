@@ -154,6 +154,15 @@ public class MapLoader {
                         case 'r':
                             cell.setType(CellType.FIREPIT);
                             break;
+                        case 'o':
+                            cell.setType(CellType.BEAR);
+                            break;
+                        case '[':
+                            cell.setType(CellType.SNAKE);
+                            break;
+                        case ']':
+                            cell.setType(CellType.CRAB);
+                            break;
                         default:
                             throw new RuntimeException("Unrecognized character: '" + line.charAt(x) + "'");
                     }

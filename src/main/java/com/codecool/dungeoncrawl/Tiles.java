@@ -63,6 +63,9 @@ public class Tiles {
         tileMap.put("sign",new Tile(0,7));
         tileMap.put("house",new Tile(6,20));
         tileMap.put("firepit",new Tile(14,10));
+        tileMap.put("bear",new Tile(30,8));
+        tileMap.put("snake",new Tile(28,8));
+        tileMap.put("crab",new Tile(25,5));
     }
 
     public static void tileReplace(){

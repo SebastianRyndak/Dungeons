@@ -23,7 +23,7 @@ public abstract class Actor implements Drawable {
     }
     public void monsterMove(int dx, int dy) {
         Cell nextCell = cell.getNeighbor(dx, dy);
-        if (nextCell.getType() == CellType.FLOOR && nextCell.getActor() == null && canMove) {
+        if (nextCell.getType() == CellType.FLOOR && nextCell.getActor() == null && canMove || nextCell.getType() == CellType.GRASS) {
             cell.setActor(null);
             nextCell.setActor(this);
             cell = nextCell;

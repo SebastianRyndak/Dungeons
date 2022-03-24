@@ -49,7 +49,8 @@ public class Player extends Actor {
 
     public void move(int dx, int dy) {
         Cell nextCell = this.getCell().getNeighbor(dx, dy);
-        if (nextCell.getType() == CellType.FLOOR || nextCell.getType() == CellType.DOOR || nextCell.getType() == CellType.OPEN_DOOR || nextCell.getType() == CellType.DEAD) {
+        if (nextCell.getType() == CellType.FLOOR || nextCell.getType() == CellType.DOOR || nextCell.getType() == CellType.OPEN_DOOR || nextCell.getType() == CellType.DEAD
+        || nextCell.getType() == CellType.GRASS) {
             if (nextCell.getType() == CellType.DEAD && nextCell.getActor() instanceof Actor) {
                 this.getCell().setActor(null);
                 nextCell.setActor(this);
@@ -100,6 +101,7 @@ public class Player extends Actor {
                 insertIntoInventory(cell.getItem());
                 cell.setItem(null);
                 checkIfYouHaveHelmet();
+
             }
 
         }
@@ -122,6 +124,7 @@ public class Player extends Actor {
     private void checkIfYouHaveHelmet() {
         checkIfYouHavePotion();
         tileReplaceForPlayersHelmet();
+        this.getCell().getActor().setStrength(getStrength() + 5);
 
     }
 

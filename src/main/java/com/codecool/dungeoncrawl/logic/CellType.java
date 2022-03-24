@@ -36,7 +36,10 @@ public enum CellType {
     SIGN("sign"),
     HOUSE("house"),
     FIREPIT("firepit"),
-    DEADPLAYER("dead player");
+    DEADPLAYER("dead player"),
+    BEAR("bear"),
+    SNAKE("snake"),
+    CRAB("crab");
 
 
 
