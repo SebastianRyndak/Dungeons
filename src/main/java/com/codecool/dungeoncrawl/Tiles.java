@@ -37,7 +37,7 @@ public class Tiles {
         tileMap.put("grates",new Tile(5,5));
         tileMap.put("bones",new Tile(0,15));
         tileMap.put("floor", new Tile(2, 0));
-        tileMap.put("player", new Tile(27, 0));
+        tileMap.put("player", new Tile(25, 0));
         tileMap.put("skeleton", new Tile(29, 6));
         tileMap.put("sword +5 attack", new Tile(0, 31));
         tileMap.put("key", new Tile(16, 23));
@@ -46,26 +46,23 @@ public class Tiles {
         tileMap.put("closed door", new Tile(3, 9));
         tileMap.put("candlestick", new Tile(4,15));
         tileMap.put("potion", new Tile(17,25));
+        tileMap.put("helmet", new Tile(4,22));
     }
 
     public static void tileReplace(){
         tileMap.put("closed door", new Tile(6, 9));
     }
 
-    public static void tileReplaceForBat(){
-        tileMap.put("bat", new Tile(17, 24));
-    }
-
-    public static void tileReplaceForSkeleton(){
-        tileMap.put("skeleton", new Tile(17, 24));
-    }
-
-    public static void tileReplaceForSpider(){
-        tileMap.put("giantspider", new Tile(17, 24));
-    }
-
-    public static void tileReplaceForPlayer(){
+    public static void tileReplaceForDeadPlayer(){
         tileMap.put("player", new Tile(18, 24));
+    }
+
+    public static void tileReplaceForPlayersSword(){
+        tileMap.put("player", new Tile(27, 0));
+    }
+
+    public static void tileReplaceForPlayersHelmet(){
+        tileMap.put("player", new Tile(28, 0));
     }
 
 
