@@ -5,6 +5,10 @@ import com.codecool.dungeoncrawl.logic.actors.Player;
 public class GameMap {
     private int width;
     private int height;
+    public Cell[][] getCells() {
+        return cells;
+    }
+
     private Cell[][] cells;
 
     private Player player;

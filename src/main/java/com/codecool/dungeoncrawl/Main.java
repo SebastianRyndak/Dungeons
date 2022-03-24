@@ -4,7 +4,9 @@ import com.codecool.dungeoncrawl.logic.Cell;
 import com.codecool.dungeoncrawl.logic.CellType;
 import com.codecool.dungeoncrawl.logic.GameMap;
 import com.codecool.dungeoncrawl.logic.MapLoader;
+import com.codecool.dungeoncrawl.logic.actors.Bat;
 import com.codecool.dungeoncrawl.logic.actors.Player;
+import com.codecool.dungeoncrawl.logic.actors.Skeleton;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -23,6 +25,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import java.util.Random;
+
 
 
 
@@ -38,6 +42,26 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
+    public void initialize(){
+        Thread movement = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true){
+                    try {
+                        Thread.currentThread().sleep(1000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    enemyMoves();
+                    refresh();
+                }
+            }
+        });
+        movement.start();
+
+    }
+
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -112,11 +136,17 @@ public class Main extends Application {
         refresh();
         scene.setOnKeyPressed(this::onKeyPressed);
 
-        gameStage.setTitle("Dungeon Crawl");
-        gameStage.show();
+        primaryStage.setTitle("Dungeon Crawl");
+        primaryStage.show();
+        initialize();
+
     }
 
+
+
     private void onKeyPressed(KeyEvent keyEvent) {
+        enemyMoves();
+
         switch (keyEvent.getCode()) {
             case UP:
                 map.getPlayer().move(0, -1);
@@ -140,6 +170,42 @@ public class Main extends Application {
                 break;
         }
     }
+    public int x, y = 0;
+    private void enemyMoves() {
+        for (Cell[] cells: map.getCells()) {
+            for (Cell cell: cells) {
+                if (cell.getActor() instanceof Skeleton || cell.getActor() instanceof Bat) {
+                    System.out.println(cell.getActor().isCanMove());
+                    if (cell.getActor().isCanMove()) {
+                        Random r = new Random();
+                        int direction = r.nextInt(2);
+                        int upOrDown = r.nextInt(2);
+                        if (direction == 0) {
+                            y = 0;
+                            x = (upOrDown == 0) ? -1 : 1;
+                        } else {
+                            x = 0;
+                            y = (upOrDown == 0) ? -1 : 1;
+                        }
+
+                        cell.getActor().monsterMove(x, y);
+
+                    }
+                }
+            }
+        }
+        resetEnemyMove();
+    }
+    private void resetEnemyMove() {
+        for (Cell[] cells: map.getCells()) {
+            for (Cell cell: cells) {
+                if (cell.getActor() instanceof Skeleton || cell.getActor() instanceof Bat) {
+                  /*  cell.getActor().setCanMove(true);*/
+                }
+            }
+        }
+    }
+
 
     private void refresh() {
         context.setFill(Color.BLACK);

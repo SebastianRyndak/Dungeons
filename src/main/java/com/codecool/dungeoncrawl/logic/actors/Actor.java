@@ -13,15 +13,27 @@ public abstract class Actor implements Drawable {
     private Cell cell;
     private int health;
     private int strength;
+    private boolean canMove = true;
+    public boolean isCanMove() { return canMove; }
+
 
     public Actor(Cell cell) {
         this.cell = cell;
         this.cell.setActor(this);
     }
-
-
-    public void move(int dx, int dy) {
-    }
+    public void monsterMove(int dx, int dy) {
+        Cell nextCell = cell.getNeighbor(dx, dy);
+        if (nextCell.getType() == CellType.FLOOR && nextCell.getActor() == null && canMove) {
+            System.out.println("ide sobie");
+            cell.setActor(null);
+            nextCell.setActor(this);
+            cell = nextCell;
+        }
+        else if(nextCell.getActor() instanceof Player) {
+                System.out.println("sjbsushjsgusgusg");
+                this.canMove=false;
+            }
+        }
 
 
     public int getHealth() {
@@ -53,5 +65,7 @@ public abstract class Actor implements Drawable {
     public int getStrength() { return strength; }
 
     public void setStrength(int strength) { this.strength = strength; }
+
+    public void setCanMove(boolean canMove) { this.canMove = canMove; }
 
 }
