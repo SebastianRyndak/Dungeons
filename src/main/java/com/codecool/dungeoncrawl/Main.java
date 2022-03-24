@@ -15,10 +15,12 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -41,55 +43,63 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         Stage startStage = new Stage();
         AnchorPane anchorPane = new AnchorPane();
+        ImageView backgroundImage = new ImageView(new Image("asdsad.png"));
+        backgroundImage.setFitWidth(400);
+        backgroundImage.setFitHeight(600);
+
+
         anchorPane.setPrefWidth(400);
         anchorPane.setPrefHeight(400);
 
         Button startGameButton = new Button("Start");
         startGameButton.setLayoutX(130);
-        startGameButton.setLayoutY(200);
+        startGameButton.setLayoutY(300);
         startGameButton.setMinSize(140,25);
+
 
         Label label = new Label("In the Land of Thrillers");
         label.setLayoutX(50);
         label.setLayoutY(30);
         label.setStyle("-fx-font-size: 30");
-        anchorPane.getChildren().add(label);
+
 
         TextArea userName= new TextArea("Enter your name");
         userName.setMaxSize(160,20);
         userName.setLayoutX(120);
-        userName.setLayoutY(120);
-
-
+        userName.setLayoutY(200);
 
 
         startGameButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent e) {
-                startGame();
+                startGame(userName.getText());
             }
         });
 
+        anchorPane.getChildren().add(backgroundImage);
         anchorPane.getChildren().add(userName);
         anchorPane.getChildren().add(startGameButton);
+        anchorPane.getChildren().add(label);
         Scene scene = new Scene(anchorPane);
         startStage.setScene(scene);
 
-        startStage.setTitle("Seba & Kuba project");
+        startGameButton.setOnAction(event -> startGame(userName.getText()));
+
+        startStage.setTitle("In the Land of Thrillers");
         startStage.show();
     }
 
-    public void startGame() {
+    public void startGame(String userName) {
         Stage gameStage = new Stage();
-        GridPane ui = new GridPane();
+        VBox ui = new VBox();
         ui.setPrefWidth(200);
         ui.setPadding(new Insets(10));
 
 
-        ui.add(new Label("Health: "), 0, 0);
-        ui.add(healthLabel, 1, 0);
-        ui.add(new Label("Inventory:"), 0, 12);
-        ui.add(inventory, 13, 12);
+        ui.getChildren().add(new Label("Player: "+ userName));
+        ui.getChildren().add(new Label("Health: "));
+        ui.getChildren().add(new Label("Inventory: "));
+        ui.getChildren().add(inventory);
 
 
         BorderPane borderPane = new BorderPane();

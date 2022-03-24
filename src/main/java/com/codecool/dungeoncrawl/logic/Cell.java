@@ -20,14 +20,6 @@ public class Cell implements Drawable {
         this.type = type;
     }
 
-//    public void setCell(Cell cell){
-////        this.setType(cell.getType());
-////        this.setActor(cell.getActor());
-////        this.setItem(cell.getItem());
-////        this.setGameMap(cell.getGameMap());
-////        this.setX(cell.getX());
-////        this.setY(cell.getY());
-//    }
 
     public void setGameMap(GameMap gameMap) {
         this.gameMap = gameMap;
