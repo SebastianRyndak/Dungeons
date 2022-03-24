@@ -136,8 +136,8 @@ public class Main extends Application {
         refresh();
         scene.setOnKeyPressed(this::onKeyPressed);
 
-        primaryStage.setTitle("Dungeon Crawl");
-        primaryStage.show();
+        gameStage.setTitle("Dungeon Crawl");
+        gameStage.show();
         initialize();
 
     }
