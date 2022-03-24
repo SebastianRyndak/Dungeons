@@ -19,13 +19,9 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import org.w3c.dom.Text;
 
-import javax.swing.text.html.ImageView;
-import java.awt.*;
 
 
 public class Main extends Application {
@@ -45,19 +41,26 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         Stage startStage = new Stage();
         AnchorPane anchorPane = new AnchorPane();
-        anchorPane.setPrefWidth(300);
-        anchorPane.setPrefHeight(300);
+        anchorPane.setPrefWidth(400);
+        anchorPane.setPrefHeight(400);
 
         Button startGameButton = new Button("Start");
-        startGameButton.setLayoutX(140);
-        startGameButton.setLayoutY(50);
+        startGameButton.setLayoutX(130);
+        startGameButton.setLayoutY(200);
+        startGameButton.setMinSize(140,25);
 
-        Label label = new Label("Gra dla Dwojga");
-        label.setLayoutX(30);
+        Label label = new Label("In the Land of Thrillers");
+        label.setLayoutX(50);
         label.setLayoutY(30);
-        label.setStyle("-fx-font-size: 30; -fx-background-color: lightblue");
+        label.setStyle("-fx-font-size: 30");
         anchorPane.getChildren().add(label);
-//        Image image1 = new Image(test.class.getResourceAsStream("src/main/resources/zajebana z neta.jpg"));
+
+        TextArea userName= new TextArea("Enter your name");
+        userName.setMaxSize(160,20);
+        userName.setLayoutX(120);
+        userName.setLayoutY(120);
+
+
 
 
         startGameButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -67,6 +70,7 @@ public class Main extends Application {
             }
         });
 
+        anchorPane.getChildren().add(userName);
         anchorPane.getChildren().add(startGameButton);
         Scene scene = new Scene(anchorPane);
         startStage.setScene(scene);
