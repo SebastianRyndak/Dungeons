@@ -117,7 +117,6 @@ public class MapLoader {
                         case 'i':
                             cell.setType(CellType.CORNER4);
                             break;
-
                         case 'e':
                             cell.setType(CellType.FLOOR);
                             new Helmet(cell);
