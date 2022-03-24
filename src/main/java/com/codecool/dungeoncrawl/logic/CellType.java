@@ -25,7 +25,19 @@ public enum CellType {
     CANDLESTICK("candlestick"),
     DEAD("DEAD"),
     POTION("potion"),
+    CHRISTMASTREE("christmasTree"),
+    CHRISTMASTREE1("christmasTree1"),
+    BUSCH("busch"),
+    BUSCH1("busch1"),
+    GRASS("grass"),
+    ROAD("road"),
+    TREE("tree"),
+    DUBLETREE("dubletree"),
+    SIGN("sign"),
+    HOUSE("house"),
+    FIREPIT("firepit"),
     DEADPLAYER("dead player");
+
 
 
     private final String tileName;

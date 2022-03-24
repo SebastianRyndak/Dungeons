@@ -52,6 +52,17 @@ public class Tiles {
         tileMap.put("candlestick", new Tile(4,15));
         tileMap.put("potion", new Tile(17,25));
         tileMap.put("helmet", new Tile(4,22));
+        tileMap.put("christmasTree",new Tile(0,1));
+        tileMap.put("christmasTree1",new Tile(1,1));
+        tileMap.put("busch",new Tile(0,2));
+        tileMap.put("bush1",new Tile(1,2));
+        tileMap.put("grass",new Tile(6,0));
+        tileMap.put("road",new Tile(5,2));
+        tileMap.put("tree",new Tile(4,2));
+        tileMap.put("dubletree",new Tile(3,2));
+        tileMap.put("sign",new Tile(0,7));
+        tileMap.put("house",new Tile(6,20));
+        tileMap.put("firepit",new Tile(14,10));
     }
 
     public static void tileReplace(){

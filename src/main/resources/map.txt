@@ -1,51 +1,51 @@
-50 50
-#############
-#...........#    ##############
-#...s...s...######............#
-#........h..............#####.#
-#...........######......#   #.#
-#.....s.....#    #......#   #.#
-#...........#    #...h..#   #.#
-#...........#    #......#   #.#
-####c.c######    ###..###   #.#
-   #...#           #..#     #.#
-   #...#           #..#     #.#
-   #c.c#         ###..###   #.#
-  ###d##         #..g...#   #.#
-###....#         #......#   #.#
-#S.....#         #....b.#   #.#
-########         ########   #.#
-                            #.#
-#################           #.#
-#...............#############.#
-#..ty......##.................#
-#..ui......##...###############
-#...............#
-#...............#        #######################3
-#...............#        #./.#...#...#...#../#..5
-#...............#        #!p!#!p!#!p!#!p!#!p!#..5
-#..ty......ty...#        #......................5
-#..ui......ui...#        #......................5
-#...............##########.......t77777777y..t778
-#................................5        4..5
-#................................5        4..5
-#..ty......ty..............t7y...5        4..5
-1..ui......ui..............5 4...5        4..5
-6y....................t77778 67778        4..5
- 6777y..t7777777y.....5                   4..5
-     4..5       6777778                   4..5
-     4..5                                 4..5
-  122i..u223                           122i..u223
-  4c.......5                           4c......c5
-  4.......w5                           4....k...5
-  4........5                           4c......c5
-  4.......c5                           6777777778
-  677y..t778
-     4..5                    12222223
-     4..5      123    123    4c.....5  123 122223
-  122i..u222222icu2222icu2222i......u22icu2ic..c5
-  4.............................................5
-  4..................................e........@.5
-  6777yct777777yct7777yct7777y......t77yct7yc..c5
-      678      678    678    4.....c5  678 677778
+100 50
+#############               zjzjzjzjjzjzjzjzjzjzjzjzjzjzjzjzjzjzjzjzjzzzjjjzjzjzjzjzjzjzzjzjzjzjzjz
+#...........#    ##############zzzzjjjzjzjzjzjzjzjzjzjzjzzzjjzjzjzjzjzjzzzjjjzzjjjzjzzjzjzzjjzzjzjz
+#...s...s...######.......@....................zjzj....zjzjzjzjzjzjzjzj.zjjzzjzj......zjz.......zjzj
+#........h..............#######zzj.........................zjjzjzjzjz..zjzjzj.........z......zzjzjz
+#...........######..b...#      jjzzj...................................zjzjjz.................zjzjz
+#.....s.....#    #......#        zjzzz......zjzjzjzj..................zjzjjz.................zjzjzj
+#....b......#    #...h..#      jzjzjzjz.......zjzjzjz................zjzjzj..........z......zjzjjzz
+#...........#    #......#      jzjzjzjzz.......zjzjzj..............zjzjzjzj.........jj....zjzjzjzjz
+####c.c######    ########     zjzjzjzjzjj.......zzjjz.............zjzjzjzjj.......zjjz......zjzjzjz
+   #...#                     jzjzjzjzjzjjz.......zjzjzj..........................zjzj.........zjzjz
+   #...#                       zjzjzjzjzzzj.......zjzjzj.......................zjzjzj........zjzjzj
+   #c.c#                       jjzzzjzjzjzj........zzjjzjz...................zjzjzjzjz........zjzjz
+   ##d##                          jjzzzjzj.............zjzjjzj.zjzj..........zjzjjzzj..........zjzj
+   #.g.#                         jjzzzjzj...................zjzjzjzjjzjzjzjzjzjzjzjjz........zjzjzj
+   #...######################## jjzjjzz.........jj...............zjzjzjzjzjzjjzjzjzj........zjjzjzz
+   #....................b.....#  jjzz..........zjz..................zjzjjzjzj..............zjjzjzjz
+   ##########################.#  jjzz.........zjzj....................zjzj................zjzjjzjjz
+12222222222222223           #.#  jjz.........zjzjzz.....................................zjzjzjzjzjz
+4........b......#############.# zjz...r....zjzjzjzzj..................................zjzjzjzjzjzjj
+4..ty..s...##.................#  zzj.......zjzzjjzjzj...............zjzjzjj........zjzjzjzjzjzjzjjj
+4..ui......##...###############  zzjz....zjzjzjzjzjzjzjzj...........zjzjzjj.........zjzjzjzjzjzjzjj
+4.......s.......#                 zjzjzjzjzjzzjzjzjzzzjzjzjzjz..........zjzzjz........zjzjzjzjzjzjz
+4..s.......s....#        #######################3 zjzjzjzjzjzjz.........................zjzjzjzjzjj
+4...............#        #./.#...#...#...#../#..5   zjzjzjzjzjzjzjzjzj....................zzzjjjzjz
+4......s........#        #!p!#!p!#!p!#!p!#!p!#..5   zjzjzjzjzjzjjzzjzjzjzjzj.................zjzjzj
+4..ty......ty...#        #.........b.......s....5   zjzjzjzjzjzjzjzjzjzjzjzjzjzzjzj............zjzj
+4..ui......ui...#        #......................5   zjzjzjzjzjzjzjzjzjzjzjzjjzjz................zjz
+4...............##########.......t77777777y..t778   zjzjzjzzzjjjjzjzjzjzjzj................zjzjzjzj
+4.....s.....b.....s..............5        4..5      zjzjzjzjzjzjzjzjzjzj...............zjzjzjzjzjzj
+4................................5        4..5     zzjzjzjzjzjzjzjzjzzz..............zjzjzjzjzjjzjz
+4..ty......ty.....s........t7y...5        4..5    zzzjzjzjzjzjzjzjzj............zjzjzjzjzjzjzjzjjzz
+4..ui......ui..............5 4...5        4..5   jjjzjzjzjzjzjjz...................zjzjzjzjzjzjzjzz
+6y....................t77778 67778        4..5  jjjjzjzjzzzzj...........z...........zzzzjzjzjzjjzjz
+ 6777y..t7777777y.....5                   4..5   zjzzjzjzjz............zjz............jjjzjzjzjzjzj
+     4..5       6777778                   4..5     zzjzjzj............zzjzjz...........zjzjzjzjzjzz
+     4..5                                 4..5     zzjzj.............zjzjzjzj.........zjzjzjzjzjzjz
+  122i..u223                           122i..u223  jzjz............zjzjzjzjzjzj........zjzjzjjzzjzj
+  4c.......5                           4c......c5  zjz............zjzjzjzjzjzjzj.......zjzjzjzjzjzj
+  4..s.....5                           4.e..k..h5 zjzj..............zjzjzjzjzj........zjzjzjzjzjzjj
+  4.....b..5                           4c......c5 zjzj...............zjzjzjzj........zjzjzjzjzjzjzj
+  4.......c5                           6777777778  zjzzj...............zjz...........zjzjzjzjzjzjjz
+  677y..t778                                       zjzjzz..............................zjzjzjzjjzjz
+     4..5                    12222223              zjzjzj................................zjzjzjzjzj
+     4..5      123    123    4c.....5  123 122223   zjzjz.............zjz..............zjzjzjzjzjzj
+  122i..u222222icu2222icu2222i......u22icu2ic..c5  zjzjzj.............zjzz...........zjzjzjzjzjzjzz
+  4.....s.......................................5  zjzjzj...........................zjjjzjzzjzjjjzz
+  4........s.........................w..........5  zjzjzjzj........................................
+  6777yct777777yct7777yct7777y......t77yct7yc..c5  zjzjzjzjzjzjzzzjjjzjzjzjjzjzjzjzjzjzjzjzjzzzjjjz
+      678      678    678    4.....c5  678 677778   zjzjzzjzjzjzjzjzjzjzjzjzjzjzjzjzjzjzjzjzjzjjzjj
                              67777778

@@ -121,6 +121,39 @@ public class MapLoader {
                             cell.setType(CellType.FLOOR);
                             new Helmet(cell);
                             break;
+                        case 'z':
+                            cell.setType(CellType.CHRISTMASTREE);
+                            break;
+                        case 'x':
+                            cell.setType(CellType.CHRISTMASTREE1);
+                            break;
+                        case 'v':
+                            cell.setType(CellType.BUSCH);
+                            break;
+                        case 'n':
+                            cell.setType(CellType.BUSCH1);
+                            break;
+                        case 'm':
+                            cell.setType(CellType.GRASS);
+                            break;
+                        case 'a':
+                            cell.setType(CellType.ROAD);
+                            break;
+                        case 'f':
+                            cell.setType(CellType.TREE);
+                            break;
+                        case 'j':
+                            cell.setType(CellType.DUBLETREE);
+                            break;
+                        case 'l':
+                            cell.setType(CellType.SIGN);
+                            break;
+                        case 'q':
+                            cell.setType(CellType.HOUSE);
+                            break;
+                        case 'r':
+                            cell.setType(CellType.FIREPIT);
+                            break;
                         default:
                             throw new RuntimeException("Unrecognized character: '" + line.charAt(x) + "'");
                     }

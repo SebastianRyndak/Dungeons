@@ -25,6 +25,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 import java.util.Random;
 
@@ -34,7 +35,7 @@ import java.util.Random;
 public class Main extends Application {
     GameMap map = MapLoader.loadMap();
     Canvas canvas = new Canvas(
-            map.getWidth() * 0.5 * Tiles.TILE_WIDTH,
+            map.getWidth() * 0.25 * Tiles.TILE_WIDTH,
             map.getHeight() * 0.4 * Tiles.TILE_WIDTH);
     GraphicsContext context = canvas.getGraphicsContext2D();
     Label healthLabel = new Label();
@@ -70,7 +71,6 @@ public class Main extends Application {
         backgroundImage.setFitWidth(400);
         backgroundImage.setFitHeight(600);
 
-
         anchorPane.setPrefWidth(400);
         anchorPane.setPrefHeight(400);
 
@@ -88,9 +88,10 @@ public class Main extends Application {
 
         Label label = new Label("In the Land of Thrillers");
         label.setLayoutX(50);
-        label.setLayoutY(30);
+        label.setLayoutY(40);
         label.setStyle("-fx-font-size: 30");
-
+        Paint paint = Color.web("#6b1405");
+        label.setTextFill(paint);
 
         TextArea userName= new TextArea("Enter your name");
         userName.setMaxSize(160,20);
@@ -204,6 +205,7 @@ public class Main extends Application {
         }
         resetEnemyMove();
     }
+
     private void resetEnemyMove() {
         for (Cell[] cells: map.getCells()) {
             for (Cell cell: cells) {
@@ -222,8 +224,8 @@ public class Main extends Application {
                 Player player = map.getPlayer();
                 int playerPositionX = player.getX();
                 int playerPositionY = player.getY();
-                int windowX = playerPositionX + x - 11;
-                int windowY = playerPositionY + y - 11;
+                int windowX = playerPositionX + x - 15;
+                int windowY = playerPositionY + y - 10;
                 if (windowY < 0 || windowY >= map.getHeight()) {
                     Tiles.drawTile(context, () -> "empty", x, y);
                 } else if (windowX < 0 || windowX >= map.getWidth()) {
