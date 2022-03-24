@@ -41,7 +41,7 @@ public class Main extends Application {
             public void run() {
                 while (true){
                     try {
-                        Thread.currentThread().sleep(200);
+                        Thread.currentThread().sleep(1000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -122,6 +122,7 @@ public class Main extends Application {
         for (Cell[] cells: map.getCells()) {
             for (Cell cell: cells) {
                 if (cell.getActor() instanceof Skeleton || cell.getActor() instanceof Bat) {
+                    System.out.println(cell.getActor().isCanMove());
                     if (cell.getActor().isCanMove()) {
                         Random r = new Random();
                         int direction = r.nextInt(2);
@@ -146,7 +147,7 @@ public class Main extends Application {
         for (Cell[] cells: map.getCells()) {
             for (Cell cell: cells) {
                 if (cell.getActor() instanceof Skeleton || cell.getActor() instanceof Bat) {
-                    cell.getActor().setCanMove(true);
+                  /*  cell.getActor().setCanMove(true);*/
                 }
             }
         }
