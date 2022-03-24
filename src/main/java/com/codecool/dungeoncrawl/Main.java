@@ -18,8 +18,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-
 import java.util.Random;
+
 
 
 public class Main extends Application {
@@ -34,6 +34,26 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
+    public void initialize(){
+        Thread movement = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (true){
+                    try {
+                        Thread.currentThread().sleep(200);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    enemyMoves();
+                    refresh();
+                }
+            }
+        });
+        movement.start();
+
+    }
+
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -66,11 +86,14 @@ public class Main extends Application {
 
         primaryStage.setTitle("Dungeon Crawl");
         primaryStage.show();
+        initialize();
     }
+
+
 
     private void onKeyPressed(KeyEvent keyEvent) {
         enemyMoves();
-        resetMonsterMove();
+
         switch (keyEvent.getCode()) {
             case UP:
                 map.getPlayer().move(0, -1);
@@ -110,16 +133,16 @@ public class Main extends Application {
                             x = 0;
                             y = (upOrDown == 0) ? -1 : 1;
                         }
-                        cell.getActor().setCanMove(false);
-                        cell.getActor().monsterMove(x, y);
 
+                        cell.getActor().monsterMove(x, y);
 
                     }
                 }
             }
         }
+        resetEnemyMove();
     }
-    private void resetMonsterMove() {
+    private void resetEnemyMove() {
         for (Cell[] cells: map.getCells()) {
             for (Cell cell: cells) {
                 if (cell.getActor() instanceof Skeleton || cell.getActor() instanceof Bat) {
@@ -128,6 +151,7 @@ public class Main extends Application {
             }
         }
     }
+
 
     private void refresh() {
         context.setFill(Color.BLACK);
