@@ -67,13 +67,13 @@ public class Player extends Actor {
                 Tiles.tileReplace();
                 this.getCell().setType(CellType.OPEN_DOOR);
             }if (nextCell.getActor().getTileName().equals("skeleton")){
-                battle(dx, dy);
+                battleWithSpider(dx,dy);
                 playerDead();
             }else if(nextCell.getActor().getTileName().equals("bat")){
-                battle(dx, dy);
+                battleWithSpider(dx, dy);
                 playerDead();
             }else if(nextCell.getActor().getTileName().equals("giantspider")){
-                battle(dx, dy);
+                battleWithSpider(dx, dy);
                 playerDead();
             }
         }
@@ -83,12 +83,23 @@ public class Player extends Actor {
     public void pickUpTheItem(){
         Cell cell = getCell();
         if (cell.getType() == CellType.FLOOR) {
-            if (cell.getItem() instanceof Item) {
+            if (cell.getItem() instanceof Item && cell.getItem().getTileName().equals("potion")) {
+                checkIfYouHavePotion();
+                cell.setItem(null);
+            }else if(cell.getItem() instanceof Item && cell.getItem().getTileName().equals("sword +5 attack")) {
+                checkIfYouHaveSword();
                 insertIntoInventory(cell.getItem());
                 cell.setItem(null);
                 checkIfYouHaveTheKey();
+            }else if(cell.getItem() instanceof Item && cell.getItem().getTileName().equals("key")){
+                insertIntoInventory(cell.getItem());
+                cell.setItem(null);
+                checkIfYouHaveTheKey();
+            }else if(cell.getItem() instanceof Item && cell.getItem().getTileName().equals("helmet")){
+                insertIntoInventory(cell.getItem());
+                cell.setItem(null);
                 checkIfYouHavePotion();
-                checkIfYouHaveSword();
+                checkIfYouHaveHelmet();
             }
 
         }
@@ -105,24 +116,23 @@ public class Player extends Actor {
     }
 
     private void checkIfYouHavePotion(){
-        for (Item item: inventory) {
-            if (item.getTileName().equals("potion")){
-                this.getCell().getActor().setHealth(getHealth() + 5);
-            }
-        }
+        this.getCell().getActor().setHealth(getHealth() + 5);
+    }
+
+    private void checkIfYouHaveHelmet(){
+        checkIfYouHavePotion();
+        tileReplaceForPlayersHelmet();
 
     }
 
     private void checkIfYouHaveSword(){
-        for (Item item: inventory) {
-            if (item.getTileName().equals("sword")){
-                this.getCell().getActor().setStrength(getStrength() + 5);
-            }
-        }
+        this.getCell().getActor().setStrength(getStrength() + 5);
+        tileReplaceForPlayersSword();
 
     }
 
     private void battle(int dx, int dy) {
+        System.out.println("skeleton");
         Cell nextCell = this.getCell().getNeighbor(dx, dy);
         this.setHealth(getHealth() - nextCell.getActor().getStrength());
         nextCell.getActor().setHealth(nextCell.getActor().getHealth() - this.getStrength());
@@ -140,6 +150,45 @@ public class Player extends Actor {
             alert.setContentText("Tak bardzo się starałeś lecz z gry wyleciałeś, na na na na na !!");
             alert.showAndWait();
             System.exit(0);
+        System.out.println(nextCell.getActor().getHealth());
+        if(nextCell.getActor().getHealth() < 1){
+//            tileReplaceForSkeleton();
+            nextCell.setType(null);
+        }
+
+    }
+
+    private void battleWithBat(int dx, int dy) {
+        System.out.println("nitoperek");
+        Cell nextCell = this.getCell().getNeighbor(dx, dy);
+        System.out.println(nextCell.getActor().getTileName());
+        this.setHealth(getHealth() - nextCell.getActor().getStrength());
+        System.out.println(nextCell.getActor().getStrength());
+        nextCell.getActor().setHealth(nextCell.getActor().getHealth() - this.getStrength());
+        System.out.println(nextCell.getActor().getHealth());
+        if (nextCell.getActor().getHealth() < 1) {
+//            tileReplaceForBat();
+            nextCell.setActor(null);
+        }
+    }
+
+    private void battleWithSpider(int dx, int dy){
+        System.out.println("nitoperek");
+        Cell nextCell = this.getCell().getNeighbor(dx, dy);
+        System.out.println(nextCell.getActor().getTileName());
+        this.setHealth(getHealth() - nextCell.getActor().getStrength());
+        System.out.println(nextCell.getActor().getStrength());
+        nextCell.getActor().setHealth(nextCell.getActor().getHealth() - this.getStrength());
+        System.out.println(nextCell.getActor().getHealth());
+        if (nextCell.getActor().getHealth() < 1) {
+//            tileReplaceForSpider();
+            nextCell.setActor(null);
+        }
+    }
+
+    private void playerDead(){
+        if(this.getCell().getActor().getHealth() < 1){
+            tileReplaceForDeadPlayer();
             this.getCell().setType(CellType.DEADPLAYER);
 
         }
