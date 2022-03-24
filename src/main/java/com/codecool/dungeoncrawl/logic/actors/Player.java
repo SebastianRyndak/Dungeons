@@ -67,13 +67,13 @@ public class Player extends Actor {
                 Tiles.tileReplace();
                 this.getCell().setType(CellType.OPEN_DOOR);
             }if (nextCell.getActor().getTileName().equals("skeleton")){
-                battleWithSpider(dx,dy);
+                battle(dx,dy);
                 playerDead();
             }else if(nextCell.getActor().getTileName().equals("bat")){
-                battleWithSpider(dx, dy);
+                battle(dx, dy);
                 playerDead();
             }else if(nextCell.getActor().getTileName().equals("giantspider")){
-                battleWithSpider(dx, dy);
+                battle(dx, dy);
                 playerDead();
             }
         }
@@ -98,7 +98,6 @@ public class Player extends Actor {
             }else if(cell.getItem() instanceof Item && cell.getItem().getTileName().equals("helmet")){
                 insertIntoInventory(cell.getItem());
                 cell.setItem(null);
-                checkIfYouHavePotion();
                 checkIfYouHaveHelmet();
             }
 
@@ -144,53 +143,48 @@ public class Player extends Actor {
 
     private void playerDead(){
         if(this.getCell().getActor().getHealth() < 1){
-            tileReplaceForPlayer();
+            tileReplaceForDeadPlayer();
+            this.getCell().setType(CellType.DEADPLAYER);
             alert.setTitle("Game Over");
             alert.setHeaderText("GAME OVER");
             alert.setContentText("Tak bardzo się starałeś lecz z gry wyleciałeś, na na na na na !!");
             alert.showAndWait();
             System.exit(0);
-        System.out.println(nextCell.getActor().getHealth());
-        if(nextCell.getActor().getHealth() < 1){
-//            tileReplaceForSkeleton();
-            nextCell.setType(null);
-        }
-
     }
 
-    private void battleWithBat(int dx, int dy) {
-        System.out.println("nitoperek");
-        Cell nextCell = this.getCell().getNeighbor(dx, dy);
-        System.out.println(nextCell.getActor().getTileName());
-        this.setHealth(getHealth() - nextCell.getActor().getStrength());
-        System.out.println(nextCell.getActor().getStrength());
-        nextCell.getActor().setHealth(nextCell.getActor().getHealth() - this.getStrength());
-        System.out.println(nextCell.getActor().getHealth());
-        if (nextCell.getActor().getHealth() < 1) {
-//            tileReplaceForBat();
-            nextCell.setActor(null);
-        }
-    }
+//    private void battleWithBat(int dx, int dy) {
+//        System.out.println("nitoperek");
+//        Cell nextCell = this.getCell().getNeighbor(dx, dy);
+//        System.out.println(nextCell.getActor().getTileName());
+//        this.setHealth(getHealth() - nextCell.getActor().getStrength());
+//        System.out.println(nextCell.getActor().getStrength());
+//        nextCell.getActor().setHealth(nextCell.getActor().getHealth() - this.getStrength());
+//        System.out.println(nextCell.getActor().getHealth());
+//        if (nextCell.getActor().getHealth() < 1) {
+////            tileReplaceForBat();
+//            nextCell.setActor(null);
+//        }
+//    }
+//
+//    private void battleWithSpider(int dx, int dy){
+//        System.out.println("nitoperek");
+//        Cell nextCell = this.getCell().getNeighbor(dx, dy);
+//        System.out.println(nextCell.getActor().getTileName());
+//        this.setHealth(getHealth() - nextCell.getActor().getStrength());
+//        System.out.println(nextCell.getActor().getStrength());
+//        nextCell.getActor().setHealth(nextCell.getActor().getHealth() - this.getStrength());
+//        System.out.println(nextCell.getActor().getHealth());
+//        if (nextCell.getActor().getHealth() < 1) {
+////            tileReplaceForSpider();
+//            nextCell.setActor(null);
+//        }
+//    }
 
-    private void battleWithSpider(int dx, int dy){
-        System.out.println("nitoperek");
-        Cell nextCell = this.getCell().getNeighbor(dx, dy);
-        System.out.println(nextCell.getActor().getTileName());
-        this.setHealth(getHealth() - nextCell.getActor().getStrength());
-        System.out.println(nextCell.getActor().getStrength());
-        nextCell.getActor().setHealth(nextCell.getActor().getHealth() - this.getStrength());
-        System.out.println(nextCell.getActor().getHealth());
-        if (nextCell.getActor().getHealth() < 1) {
-//            tileReplaceForSpider();
-            nextCell.setActor(null);
-        }
-    }
-
-    private void playerDead(){
-        if(this.getCell().getActor().getHealth() < 1){
-            tileReplaceForDeadPlayer();
-            this.getCell().setType(CellType.DEADPLAYER);
-
-        }
+//    private void playerDead(){
+//        if(this.getCell().getActor().getHealth() < 1){
+//            tileReplaceForDeadPlayer();
+//            this.getCell().setType(CellType.DEADPLAYER);
+//
+//        }
     }
 }
