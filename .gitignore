@@ -34,3 +34,14 @@ out/
 *.iml
 *.ipr
 *.iws
+target/classes/com/codecool/dungeoncrawl/App.class
+target/classes/com/codecool/dungeoncrawl/logic/actors/Actor.class
+target/classes/com/codecool/dungeoncrawl/logic/actors/Bat.class
+target/classes/com/codecool/dungeoncrawl/logic/actors/GiantSpider.class
+target/classes/com/codecool/dungeoncrawl/logic/actors/Player.class
+target/classes/com/codecool/dungeoncrawl/logic/actors/Skeleton.class
+target/classes/com/codecool/dungeoncrawl/logic/Cell.class
+target/classes/com/codecool/dungeoncrawl/logic/CellType.class
+target/classes/com/codecool/dungeoncrawl/logic/Drawable.class
+target/classes/com/codecool/dungeoncrawl/logic/GameMap.class
+target/classes/com/codecool/dungeoncrawl/logic/items/Item.class
