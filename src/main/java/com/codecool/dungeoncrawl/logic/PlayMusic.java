@@ -15,7 +15,7 @@ public class PlayMusic {
         AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
         Clip clip = AudioSystem.getClip();
         clip.open(audioStream);
-        String response = "Y";
+        String response = "N";
 
         while (!response.equals("Q")){
 //            System.out.print("  Do you want your game to be accompanied by music? Y/N: ");
