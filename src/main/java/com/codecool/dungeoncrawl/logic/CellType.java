@@ -18,7 +18,10 @@ public enum CellType {
     DOOR("closed door"),
     OPEN_DOOR("open door"),
     CANDLESTICK("candlestick"),
-    DEAD("DEAD");
+    DEAD("DEAD"),
+    POTION("potion"),
+    DEADPLAYER("dead player");
+
 
     private final String tileName;
 
