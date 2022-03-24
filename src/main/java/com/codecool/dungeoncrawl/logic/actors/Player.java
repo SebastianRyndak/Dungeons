@@ -4,14 +4,15 @@ import com.codecool.dungeoncrawl.Tiles;
 import com.codecool.dungeoncrawl.logic.Cell;
 import com.codecool.dungeoncrawl.logic.CellType;
 import com.codecool.dungeoncrawl.logic.items.Item;
-import javafx.stage.Stage;
+import javafx.scene.control.Alert;
 
 import java.util.ArrayList;
 
 import static com.codecool.dungeoncrawl.Tiles.*;
 
 public class Player extends Actor {
-  
+
+    Alert alert = new Alert(Alert.AlertType.INFORMATION);
     public ArrayList<Item> inventory = new ArrayList<>();
 
     private boolean key = false;
@@ -121,55 +122,26 @@ public class Player extends Actor {
 
     }
 
-    private void battle(int dx, int dy){
-        System.out.println("skeleton");
+    private void battle(int dx, int dy) {
         Cell nextCell = this.getCell().getNeighbor(dx, dy);
-        System.out.println(nextCell.getActor().getTileName());
         this.setHealth(getHealth() - nextCell.getActor().getStrength());
-        System.out.println(nextCell.getActor().getStrength());
         nextCell.getActor().setHealth(nextCell.getActor().getHealth() - this.getStrength());
-        System.out.println(nextCell.getActor().getHealth());
-        if(nextCell.getActor().getHealth() < 1){
-//            tileReplaceForSkeleton();
+        if (nextCell.getActor().getHealth() < 1) {
             nextCell.setActor(null);
         }
-
     }
-//
-//    private void battleWithBat(int dx, int dy) {
-//        System.out.println("nitoperek");
-//        Cell nextCell = this.getCell().getNeighbor(dx, dy);
-//        System.out.println(nextCell.getActor().getTileName());
-//        this.setHealth(getHealth() - nextCell.getActor().getStrength());
-//        System.out.println(nextCell.getActor().getStrength());
-//        nextCell.getActor().setHealth(nextCell.getActor().getHealth() - this.getStrength());
-//        System.out.println(nextCell.getActor().getHealth());
-//        if (nextCell.getActor().getHealth() < 1) {
-////            tileReplaceForBat();
-//            nextCell.setActor(null);
-//        }
-//    }
-//
-//    private void battleWithSpider(int dx, int dy){
-//        System.out.println("nitoperek");
-//        Cell nextCell = this.getCell().getNeighbor(dx, dy);
-//        System.out.println(nextCell.getActor().getTileName());
-//        this.setHealth(getHealth() - nextCell.getActor().getStrength());
-//        System.out.println(nextCell.getActor().getStrength());
-//        nextCell.getActor().setHealth(nextCell.getActor().getHealth() - this.getStrength());
-//        System.out.println(nextCell.getActor().getHealth());
-//        if (nextCell.getActor().getHealth() < 1) {
-////            tileReplaceForSpider();
-//            nextCell.setActor(null);
-//        }
-//    }
+
 
     private void playerDead(){
         if(this.getCell().getActor().getHealth() < 1){
             tileReplaceForPlayer();
+            alert.setTitle("Game Over");
+            alert.setHeaderText("GAME OVER");
+            alert.setContentText("Tak bardzo się starałeś lecz z gry wyleciałeś, na na na na na !!");
+            alert.showAndWait();
+            System.exit(0);
             this.getCell().setType(CellType.DEADPLAYER);
 
         }
     }
-
 }

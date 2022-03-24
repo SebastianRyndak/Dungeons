@@ -1,6 +1,7 @@
 package com.codecool.dungeoncrawl.logic;
 
 public enum CellType {
+    STAIRS("stairs"),
     EMPTY("empty"),
     FLOOR("floor"),
     WALL("wall"),
@@ -12,6 +13,10 @@ public enum CellType {
     WALL6("wall6"),
     WALL7("wall7"),
     WALL8("wall8"),
+    CORNER1("corner1"),
+    CORNER2("corner2"),
+    CORNER3("corner3"),
+    CORNER4("corner4"),
     PRISONGRATES("prisonGrates"),
     GRATES("grates"),
     BONES("bones"),

@@ -8,6 +8,7 @@ import com.codecool.dungeoncrawl.logic.actors.Bat;
 import com.codecool.dungeoncrawl.logic.actors.Player;
 import com.codecool.dungeoncrawl.logic.actors.Skeleton;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -59,9 +60,7 @@ public class Main extends Application {
             }
         });
         movement.start();
-
     }
-
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -75,10 +74,16 @@ public class Main extends Application {
         anchorPane.setPrefWidth(400);
         anchorPane.setPrefHeight(400);
 
+
         Button startGameButton = new Button("Start");
         startGameButton.setLayoutX(130);
         startGameButton.setLayoutY(300);
         startGameButton.setMinSize(140,25);
+
+        Button quitButton = new Button("Quit Game");
+        quitButton.setOnAction( e -> Platform.exit());
+        quitButton.setLayoutX(165);
+        quitButton.setLayoutY(350);
 
 
         Label label = new Label("In the Land of Thrillers");
@@ -104,9 +109,9 @@ public class Main extends Application {
         anchorPane.getChildren().add(userName);
         anchorPane.getChildren().add(startGameButton);
         anchorPane.getChildren().add(label);
+        anchorPane.getChildren().add(quitButton);
         Scene scene = new Scene(anchorPane);
         startStage.setScene(scene);
-
         startGameButton.setOnAction(event -> startGame(userName.getText()));
 
         startStage.setTitle("In the Land of Thrillers");
@@ -122,6 +127,7 @@ public class Main extends Application {
 
         ui.getChildren().add(new Label("Player: "+ userName));
         ui.getChildren().add(new Label("Health: "));
+        ui.getChildren().add(healthLabel);
         ui.getChildren().add(new Label("Inventory: "));
         ui.getChildren().add(inventory);
 
@@ -139,6 +145,7 @@ public class Main extends Application {
         gameStage.setTitle("Dungeon Crawl");
         gameStage.show();
         initialize();
+
 
     }
 
@@ -170,12 +177,13 @@ public class Main extends Application {
                 break;
         }
     }
+
+
     public int x, y = 0;
     private void enemyMoves() {
         for (Cell[] cells: map.getCells()) {
             for (Cell cell: cells) {
                 if (cell.getActor() instanceof Skeleton || cell.getActor() instanceof Bat) {
-                    System.out.println(cell.getActor().isCanMove());
                     if (cell.getActor().isCanMove()) {
                         Random r = new Random();
                         int direction = r.nextInt(2);
@@ -200,7 +208,6 @@ public class Main extends Application {
         for (Cell[] cells: map.getCells()) {
             for (Cell cell: cells) {
                 if (cell.getActor() instanceof Skeleton || cell.getActor() instanceof Bat) {
-                  /*  cell.getActor().setCanMove(true);*/
                 }
             }
         }

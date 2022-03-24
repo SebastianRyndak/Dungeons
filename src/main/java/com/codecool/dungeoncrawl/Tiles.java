@@ -24,6 +24,7 @@ public class Tiles {
 
     static {
         tileMap.put("empty", new Tile(0, 0));
+        tileMap.put("stairs", new Tile(2, 6));
         tileMap.put("wall", new Tile(10, 17));
         tileMap.put("wall1",new Tile(18,0));
         tileMap.put("wall2",new Tile(19,0));
@@ -33,6 +34,10 @@ public class Tiles {
         tileMap.put("wall6",new Tile(18,2));
         tileMap.put("wall7",new Tile(19,2));
         tileMap.put("wall8",new Tile(20,2));
+        tileMap.put("corner1",new Tile(18,3));
+        tileMap.put("corner2",new Tile(19,3));
+        tileMap.put("corner3",new Tile(18,4));
+        tileMap.put("corner4",new Tile(19,4));
         tileMap.put("prisonGrates",new Tile(13,11));
         tileMap.put("grates",new Tile(5,5));
         tileMap.put("bones",new Tile(0,15));
