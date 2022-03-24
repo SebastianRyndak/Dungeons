@@ -48,7 +48,15 @@ public class Tiles {
     }
 
     public static void tileReplace(){
-        tileMap.put("closed door", new Tile(6, 6));
+        tileMap.put("closed door", new Tile(6, 9));
+    }
+
+    public static void tileReplaceForBat(){
+        tileMap.put("bat", new Tile(17, 24));
+    }
+
+    public static void tileReplaceForSkeleton(){
+        tileMap.put("skeleton", new Tile(17, 24));
     }
 
     public static void drawTile(GraphicsContext context, Drawable d, int x, int y) {

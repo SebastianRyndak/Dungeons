@@ -4,13 +4,15 @@ import com.codecool.dungeoncrawl.Tiles;
 import com.codecool.dungeoncrawl.logic.Cell;
 import com.codecool.dungeoncrawl.logic.CellType;
 import com.codecool.dungeoncrawl.logic.items.Item;
+import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
+import static com.codecool.dungeoncrawl.Tiles.tileReplaceForBat;
+import static com.codecool.dungeoncrawl.Tiles.tileReplaceForSkeleton;
+
 public class Player extends Actor {
-
-
-
+  
     public ArrayList<Item> inventory = new ArrayList<>();
 
     private boolean key = false;
@@ -47,18 +49,33 @@ public class Player extends Actor {
 
     public void move(int dx, int dy) {
         Cell nextCell = this.getCell().getNeighbor(dx, dy);
-        if (nextCell.getType() == CellType.FLOOR || nextCell.getType() == CellType.DOOR || nextCell.getType() == CellType.OPEN_DOOR ){
-            if (!(nextCell.getActor() instanceof Actor || nextCell.getType() == CellType.DOOR)){
+        if (nextCell.getType() == CellType.FLOOR || nextCell.getType() == CellType.DOOR || nextCell.getType() == CellType.OPEN_DOOR || nextCell.getType() == CellType.DEAD){
+            if(nextCell.getType() == CellType.DEAD && nextCell.getActor() instanceof Actor ){
                 this.getCell().setActor(null);
                 nextCell.setActor(this);
                 this.setCell(nextCell);
             }
+            if (!(nextCell.getActor() instanceof Actor || nextCell.getType() == CellType.DOOR )){
+                this.getCell().setActor(null);
+                nextCell.setActor(this);
+                this.setCell(nextCell);
+            }
+//            if( nextCell.getActor() instanceof Actor && nextCell.getType() == CellType.DEAD ){
+//                this.getCell().setActor(null);
+//                nextCell.setActor(this);
+//                this.setCell(nextCell);
+//            }
             if (nextCell.getType() == CellType.DOOR && key == true) {
                 this.getCell().setActor(null);
                 nextCell.setActor(this);
                 this.setCell(nextCell);
                 Tiles.tileReplace();
                 this.getCell().setType(CellType.OPEN_DOOR);
+            }if (nextCell.getActor().getTileName().equals("skeleton")){
+                battleWithSkeleton(dx,dy);
+            }else if(nextCell.getActor().getTileName().equals("bat")){
+                battleWithBat(dx, dy);
+
             }
         }
     }
@@ -71,7 +88,9 @@ public class Player extends Actor {
                 cell.setItem(null);
                 checkIfYouHaveTheKey();
             }
+
         }
+
     }
 
     private boolean checkIfYouHaveTheKey(){
@@ -81,5 +100,35 @@ public class Player extends Actor {
             }
         }
         return key;
+    }
+
+    private void battleWithSkeleton(int dx, int dy){
+        System.out.println("skeleton");
+        Cell nextCell = this.getCell().getNeighbor(dx, dy);
+        System.out.println(nextCell.getActor().getTileName());
+        this.setHealth(getHealth() - nextCell.getActor().getStrength());
+        System.out.println(nextCell.getActor().getStrength());
+        nextCell.getActor().setHealth(nextCell.getActor().getHealth() - this.getStrength());
+        System.out.println(nextCell.getActor().getHealth());
+        if(nextCell.getActor().getHealth() < 1){
+            tileReplaceForSkeleton();
+            nextCell.setType(CellType.DEAD);
+        }
+
+    }
+
+    private void battleWithBat(int dx, int dy){
+        System.out.println("nitoperek");
+        Cell nextCell = this.getCell().getNeighbor(dx, dy);
+        System.out.println(nextCell.getActor().getTileName());
+        this.setHealth(getHealth() - nextCell.getActor().getStrength());
+        System.out.println(nextCell.getActor().getStrength());
+        nextCell.getActor().setHealth(nextCell.getActor().getHealth() - this.getStrength());
+        System.out.println(nextCell.getActor().getHealth());
+        if(nextCell.getActor().getHealth() < 1){
+            tileReplaceForBat();
+            nextCell.setType(CellType.DEAD);
+        }
+
     }
 }
