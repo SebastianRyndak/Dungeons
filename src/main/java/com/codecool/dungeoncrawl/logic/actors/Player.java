@@ -8,8 +8,7 @@ import javafx.stage.Stage;
 
 import java.util.ArrayList;
 
-import static com.codecool.dungeoncrawl.Tiles.tileReplaceForBat;
-import static com.codecool.dungeoncrawl.Tiles.tileReplaceForSkeleton;
+import static com.codecool.dungeoncrawl.Tiles.*;
 
 public class Player extends Actor {
   
@@ -60,11 +59,6 @@ public class Player extends Actor {
                 nextCell.setActor(this);
                 this.setCell(nextCell);
             }
-//            if( nextCell.getActor() instanceof Actor && nextCell.getType() == CellType.DEAD ){
-//                this.getCell().setActor(null);
-//                nextCell.setActor(this);
-//                this.setCell(nextCell);
-//            }
             if (nextCell.getType() == CellType.DOOR && key == true) {
                 this.getCell().setActor(null);
                 nextCell.setActor(this);
@@ -75,6 +69,8 @@ public class Player extends Actor {
                 battleWithSkeleton(dx,dy);
             }else if(nextCell.getActor().getTileName().equals("bat")){
                 battleWithBat(dx, dy);
+            }else if(nextCell.getActor().getTileName().equals("giantspider")){
+                battleWithSpider(dx, dy);
 
             }
         }
@@ -129,6 +125,20 @@ public class Player extends Actor {
             tileReplaceForBat();
             nextCell.setType(CellType.DEAD);
         }
+
+    private void battleWithSpider(int dx, int dy){
+        System.out.println("gianspider");
+        Cell nextCell = this.getCell().getNeighbor(dx, dy);
+        System.out.println(nextCell.getActor().getTileName());
+        this.setHealth(getHealth() - nextCell.getActor().getStrength());
+        System.out.println(nextCell.getActor().getStrength());
+        nextCell.getActor().setHealth(nextCell.getActor().getHealth() - this.getStrength());
+        System.out.println(nextCell.getActor().getHealth());
+        if (nextCell.getActor().getHealth() < 1) {
+            tileReplaceForSpider();
+            nextCell.setType(CellType.DEAD);
+        }
+    }
 
     }
 }

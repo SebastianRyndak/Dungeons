@@ -59,6 +59,11 @@ public class Tiles {
         tileMap.put("skeleton", new Tile(17, 24));
     }
 
+    public static void tileReplaceForSpider(){
+        tileMap.put("giantspider", new Tile(17, 24));
+    }
+
+
     public static void drawTile(GraphicsContext context, Drawable d, int x, int y) {
         Tile tile = tileMap.get(d.getTileName());
         context.drawImage(tileset, tile.x, tile.y, tile.w, tile.h,
